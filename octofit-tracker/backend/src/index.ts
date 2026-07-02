@@ -13,7 +13,7 @@ const PORT = 8000;
 const getApiUrl = (): string => {
   const codespaceeName = process.env.CODESPACE_NAME;
   if (codespaceeName) {
-    return `https://${codespaceeName}-${PORT}.preview.app.github.dev`;
+    return `https://${codespaceeName}-${PORT}.app.github.dev`;
   }
   return `http://localhost:${PORT}`;
 };
