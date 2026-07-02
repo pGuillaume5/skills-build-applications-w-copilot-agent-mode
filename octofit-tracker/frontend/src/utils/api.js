@@ -24,10 +24,18 @@ export const getApiBaseUrl = () => {
 
 /**
  * Fetch from API with error handling
+ * Supports both full URLs and relative endpoints
  */
 export const apiCall = async (endpoint, options = {}) => {
-  const baseUrl = getApiBaseUrl();
-  const url = `${baseUrl}${endpoint.startsWith('/') ? endpoint : '/' + endpoint}`;
+  // If endpoint is already a full URL (http/https), use it directly
+  // Otherwise, construct the URL from base URL + endpoint
+  let url;
+  if (endpoint.startsWith('http://') || endpoint.startsWith('https://')) {
+    url = endpoint;
+  } else {
+    const baseUrl = getApiBaseUrl();
+    url = `${baseUrl}${endpoint.startsWith('/') ? endpoint : '/' + endpoint}`;
+  }
   
   try {
     const response = await fetch(url, {

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { apiCall, extractData } from '../utils/api';
+import { apiCall, extractData, getApiBaseUrl } from '../utils/api';
 
 export default function Users() {
   const [users, setUsers] = useState([]);
@@ -10,7 +10,9 @@ export default function Users() {
     const fetchUsers = async () => {
       try {
         setLoading(true);
-        const data = await apiCall('/api/users/');
+        // Codespaces URL: https://effective-space-fiesta-4jjxxv665q4whv5-8000.app.github.dev/api/users/
+        const url = `${getApiBaseUrl()}/api/users/`;
+        const data = await apiCall(url);
         setUsers(extractData(data));
       } catch (err) {
         setError(err.message);

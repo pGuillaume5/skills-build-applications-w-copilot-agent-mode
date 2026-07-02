@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { apiCall, extractData } from '../utils/api';
+import { apiCall, extractData, getApiBaseUrl } from '../utils/api';
 
 export default function Leaderboard() {
   const [leaderboard, setLeaderboard] = useState([]);
@@ -11,7 +11,9 @@ export default function Leaderboard() {
     const fetchLeaderboard = async () => {
       try {
         setLoading(true);
-        const data = await apiCall('/api/leaderboard/');
+        // Codespaces URL: https://effective-space-fiesta-4jjxxv665q4whv5-8000.app.github.dev/api/leaderboard/
+        const url = `${getApiBaseUrl()}/api/leaderboard/`;
+        const data = await apiCall(url);
         const allEntries = extractData(data);
         
         // Filter by type

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { apiCall, extractData } from '../utils/api';
+import { apiCall, extractData, getApiBaseUrl } from '../utils/api';
 
 export default function Teams() {
   const [teams, setTeams] = useState([]);
@@ -10,7 +10,9 @@ export default function Teams() {
     const fetchTeams = async () => {
       try {
         setLoading(true);
-        const data = await apiCall('/api/teams/');
+        // Codespaces URL: https://effective-space-fiesta-4jjxxv665q4whv5-8000.app.github.dev/api/teams/
+        const url = `${getApiBaseUrl()}/api/teams/`;
+        const data = await apiCall(url);
         setTeams(extractData(data));
       } catch (err) {
         setError(err.message);

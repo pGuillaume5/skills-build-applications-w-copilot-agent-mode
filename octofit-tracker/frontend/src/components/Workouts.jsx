@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { apiCall, extractData } from '../utils/api';
+import { apiCall, extractData, getApiBaseUrl } from '../utils/api';
 
 export default function Workouts() {
   const [workouts, setWorkouts] = useState([]);
@@ -10,7 +10,9 @@ export default function Workouts() {
     const fetchWorkouts = async () => {
       try {
         setLoading(true);
-        const data = await apiCall('/api/workouts/');
+        // Codespaces URL: https://effective-space-fiesta-4jjxxv665q4whv5-8000.app.github.dev/api/workouts/
+        const url = `${getApiBaseUrl()}/api/workouts/`;
+        const data = await apiCall(url);
         setWorkouts(extractData(data));
       } catch (err) {
         setError(err.message);
