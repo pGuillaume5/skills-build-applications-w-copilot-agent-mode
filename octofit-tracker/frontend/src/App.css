@@ -1,0 +1,256 @@
+/* OctoFit Tracker Styles */
+
+:root {
+  --primary-color: #007bff;
+  --secondary-color: #6c757d;
+  --success-color: #28a745;
+  --danger-color: #dc3545;
+  --warning-color: #ffc107;
+  --info-color: #17a2b8;
+  --dark-bg: #1a1a1a;
+  --light-bg: #f8f9fa;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+  background-color: var(--light-bg);
+  color: #333;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+  background-color: var(--light-bg);
+}
+
+/* Navbar Styles */
+.navbar {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: var(--dark-bg) !important;
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.nav-link {
+  transition: color 0.3s ease;
+  color: #ddd !important;
+}
+
+.nav-link:hover {
+  color: var(--primary-color) !important;
+}
+
+/* Jumbotron */
+.jumbotron {
+  background: linear-gradient(135deg, var(--primary-color), var(--info-color));
+  color: white;
+  padding: 3rem 2rem;
+  border-radius: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.jumbotron h1 {
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.jumbotron .lead {
+  font-size: 1.3rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Cards */
+.card {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border: none;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.card-title {
+  color: var(--dark-bg);
+  font-weight: 600;
+}
+
+.card-body {
+  padding: 1.5rem;
+}
+
+/* List Group */
+.list-group-item {
+  border: 1px solid #e0e0e0;
+  transition: background-color 0.2s ease;
+}
+
+.list-group-item:hover {
+  background-color: #f5f5f5;
+}
+
+/* Badges */
+.badge {
+  font-size: 0.85rem;
+  padding: 0.35rem 0.65rem;
+  font-weight: 600;
+}
+
+.badge-info {
+  background-color: var(--info-color) !important;
+}
+
+.badge-success {
+  background-color: var(--success-color) !important;
+}
+
+.badge-danger {
+  background-color: var(--danger-color) !important;
+}
+
+.badge-warning {
+  background-color: var(--warning-color) !important;
+  color: #333 !important;
+}
+
+/* Buttons */
+.btn {
+  border-radius: 0.25rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+}
+
+/* Tables */
+.table {
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.table-hover tbody tr:hover {
+  background-color: #f8f9fa;
+}
+
+.table-dark {
+  background-color: var(--dark-bg);
+  color: white;
+}
+
+/* Footer */
+footer {
+  background-color: var(--dark-bg) !important;
+  border-top: 1px solid #e0e0e0;
+  margin-top: auto;
+}
+
+footer p {
+  font-size: 0.9rem;
+  color: #aaa;
+}
+
+/* Utilities */
+.container {
+  max-width: 1200px;
+}
+
+.py-4 {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.mt-5 {
+  margin-top: 3rem;
+}
+
+.mb-3 {
+  margin-bottom: 1rem;
+}
+
+.ms-2 {
+  margin-left: 0.5rem;
+}
+
+.me-2 {
+  margin-right: 0.5rem;
+}
+
+/* Loading and Error States */
+.alert {
+  border-radius: 0.25rem;
+  border: none;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.alert-danger {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+.alert-success {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.alert-info {
+  background-color: #d1ecf1;
+  color: #0c5460;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .jumbotron {
+    padding: 2rem 1rem;
+  }
+
+  .jumbotron h1 {
+    font-size: 2rem;
+  }
+
+  .jumbotron .lead {
+    font-size: 1.1rem;
+  }
+
+  .btn-lg {
+    padding: 0.5rem 1rem !important;
+    font-size: 0.9rem !important;
+  }
+
+  .col-md-4,
+  .col-md-6,
+  .col-md-8 {
+    margin-bottom: 1rem;
+  }
+}
