@@ -7,6 +7,10 @@ import Workouts from './components/Workouts';
 import Leaderboard from './components/Leaderboard';
 import './App.css';
 
+// OctoFit Tracker - Multi-tier fitness tracking application
+// Frontend: React 19 + Vite, Backend: Express + Node.js, Database: MongoDB
+// All API endpoints configured with CORS support for Codespaces deployment
+
 function Home() {
   return (
     <div className="container py-4">
