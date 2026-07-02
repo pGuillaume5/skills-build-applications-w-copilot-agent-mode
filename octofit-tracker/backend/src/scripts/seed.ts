@@ -7,7 +7,7 @@
  * Usage: npm run seed
  */
 
-import mongoose from 'mongoose';
+import { connectDB, disconnectDB } from '../config/database.js';
 import User from '../models/User.js';
 import Team from '../models/Team.js';
 import Activity from '../models/Activity.js';
@@ -15,13 +15,10 @@ import Workout from '../models/Workout.js';
 import Leaderboard from '../models/Leaderboard.js';
 import type { IWorkout } from '../models/Workout.js';
 
-const MONGODB_URI = 'mongodb://localhost:27017/octofit_db';
-
 async function seedDatabase() {
   try {
     // Connect to MongoDB
-    await mongoose.connect(MONGODB_URI);
-    console.log('✓ Connected to MongoDB at', MONGODB_URI);
+    await connectDB();
 
     // Clear existing data
     console.log('Clearing existing data...');
@@ -352,8 +349,7 @@ async function seedDatabase() {
     console.log('- Workouts:', createdWorkouts.length);
     console.log('- Leaderboard entries:', createdLeaderboard.length);
 
-    await mongoose.connection.close();
-    console.log('\n✓ Disconnected from MongoDB');
+    await disconnectDB();
   } catch (error) {
     console.error('✗ Error seeding database:', error);
     process.exit(1);
