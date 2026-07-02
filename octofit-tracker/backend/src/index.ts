@@ -1,28 +1,14 @@
-import express, { Express, Request, Response } from 'express';
+import { createApp, startServer } from './config/server.js';
 import { connectDB } from './config/database.js';
+import { Request, Response } from 'express';
 import usersRouter from './routes/users.js';
 import teamsRouter from './routes/teams.js';
 import activitiesRouter from './routes/activities.js';
 import leaderboardRouter from './routes/leaderboard.js';
 import workoutsRouter from './routes/workouts.js';
 
-const app: Express = express();
-const PORT = 8000;
-
-// Get API URL with Codespaces support
-const getApiUrl = (): string => {
-  const codespaceeName = process.env.CODESPACE_NAME;
-  if (codespaceeName) {
-    return `https://${codespaceeName}-${PORT}.app.github.dev`;
-  }
-  return `http://localhost:${PORT}`;
-};
-
-const apiUrl = getApiUrl();
-
-// Middleware
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+// Create Express app
+const app = createApp();
 
 // Connect to database
 connectDB();
@@ -40,8 +26,4 @@ app.use('/api/leaderboard', leaderboardRouter);
 app.use('/api/workouts', workoutsRouter);
 
 // Start server
-app.listen(PORT, () => {
-  console.log(`\n🚀 OctoFit Tracker Backend`);
-  console.log(`   API URL: ${apiUrl}`);
-  console.log(`   MongoDB: ${process.env.MONGODB_URI || 'mongodb://localhost:27017/octofit_db'}\n`);
-});
+startServer(app);
