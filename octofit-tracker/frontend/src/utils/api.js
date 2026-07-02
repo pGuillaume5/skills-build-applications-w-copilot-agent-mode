@@ -15,11 +15,11 @@ export const getApiBaseUrl = () => {
   const codespaceeName = import.meta.env.VITE_CODESPACE_NAME;
   
   if (codespaceeName && codespaceeName !== 'undefined') {
-    return `https://${codespaceeName}-8000.app.github.dev/api`;
+    return `https://${codespaceeName}-8000.app.github.dev`;
   }
   
   // Fallback to localhost for development
-  return 'http://localhost:8000/api';
+  return 'http://localhost:8000';
 };
 
 /**
