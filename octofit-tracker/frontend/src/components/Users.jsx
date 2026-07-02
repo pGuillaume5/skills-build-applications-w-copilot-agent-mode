@@ -10,7 +10,7 @@ export default function Users() {
     const fetchUsers = async () => {
       try {
         setLoading(true);
-        const data = await apiCall('/users');
+        const data = await apiCall('/api/users/');
         setUsers(extractData(data));
       } catch (err) {
         setError(err.message);

@@ -11,7 +11,7 @@ export default function Leaderboard() {
     const fetchLeaderboard = async () => {
       try {
         setLoading(true);
-        const data = await apiCall('/leaderboard');
+        const data = await apiCall('/api/leaderboard/');
         const allEntries = extractData(data);
         
         // Filter by type
