@@ -1,4 +1,4 @@
-import { createApp, startServer } from './config/server.js';
+import { createApp, startServer } from './server.js';
 import { connectDB } from './config/database.js';
 import { Request, Response } from 'express';
 import usersRouter from './routes/users.js';
